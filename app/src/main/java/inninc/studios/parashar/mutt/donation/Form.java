@@ -9,6 +9,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.icu.text.DateFormat;
+import android.icu.text.DateTimePatternGenerator;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 public class Form extends AppCompatActivity {
 
@@ -28,6 +32,8 @@ public class Form extends AppCompatActivity {
     EditText mobileNum;
     EditText address;
     EditText recieverName;
+    Date dateobj;
+    DateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,11 @@ public class Form extends AppCompatActivity {
     private void createPDF() {
         createButton.setOnClickListener((view) ->{
 
+            //initializing the date
+//            dateobj = new Date();
+
+
+
             if (donatorName.getText().toString().length()==0 ||
             donationAmt.getText().toString().length()==0 ||
             mobileNum.getText().toString().length()==0 ||
@@ -71,6 +82,46 @@ public class Form extends AppCompatActivity {
                 myPaint.setTextSize(30);
                 myPaint.setTextAlign(Paint.Align.RIGHT);
                 canvas.drawText("call - +91-832724018" , 1160,40,myPaint);
+
+                myPaint.setTextSize(70);
+                myPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText("INVOICE",500,500,myPaint);
+
+                myPaint.setTextAlign(Paint.Align.LEFT);
+                myPaint.setTextSize(35);
+                myPaint.setColor(Color.BLACK);
+                canvas.drawText("Donator Name: "+ donatorName.getText(), 20,590,myPaint);
+                canvas.drawText("Receiver Name: "+ recieverName.getText(), 20,640,myPaint);
+                canvas.drawText("Phone Number: "+ mobileNum.getText(), 20,690,myPaint);
+
+
+                myPaint.setTextAlign(Paint.Align.RIGHT);
+                myPaint.setTextSize(35);
+                myPaint.setColor(Color.BLACK);
+                canvas.drawText("Address: "+ address.getText(), 1160,590,myPaint);
+
+//                dateFormat = new SimpleDateFormat("DD-MM-YY");
+//                canvas.drawText("Date :"+dateFormat.format(dateobj), 1160,690,myPaint);
+
+                myPaint.setStyle(Paint.Style.STROKE);
+                myPaint.setStrokeWidth(2);
+                canvas.drawRect(20,700, 1160 , 860 , myPaint);
+
+                myPaint.setTextAlign(Paint.Align.LEFT);
+                myPaint.setStyle(Paint.Style.FILL);
+                canvas.drawText("Sl. No",40,830,myPaint);
+                canvas.drawText("Donator Name ",200,830,myPaint);
+                canvas.drawText("Amount",700,830,myPaint);
+                canvas.drawText("Mobile Number",800,830,myPaint);
+
+                canvas.drawLine(180,790,180,840,myPaint);
+                canvas.drawLine(680,790,680,840,myPaint);
+                canvas.drawLine(880,790,880,840,myPaint);
+                canvas.drawLine(1030,790,1030,840,myPaint);
+
+
+
+
 
 
                 myPdfDocument.finishPage(myPage1);
