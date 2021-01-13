@@ -37,9 +37,7 @@
         android:id="@+id/login"
         android:layout_width="220dp"
         android:layout_height="64dp"
-        android:background="#0E0E0E"
-        android:backgroundTint="#0B0A0A"
-        android:backgroundTintMode="screen"
+        android:background="@drawable/round_corner"
         android:text="Sign In" />
 
 </LinearLayout>
