@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,6 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,8 +55,37 @@ public class Form extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putInDataBase();
+                Intent intent=new Intent(Form.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         createPDF();
     }
+
+
+
+    private void putInDataBase(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Reciver");
+
+        String dName=donatorName.getText().toString().trim();
+        String dAmt=donationAmt.getText().toString().trim();
+        String mNumer=mobileNum.getText().toString().trim();
+        String dAddress=address.getText().toString().trim();
+        String rName=recieverName.getText().toString().trim();
+
+        Dataholder obj=new Dataholder(dName,dAmt,mNumer,dAddress);
+        myRef.child(rName).setValue(obj);
+    }
+
+
 
     private void createPDF() {
         createButton.setOnClickListener((view) ->{
