@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1013518204688",
+    "project_id": "amanujar-donation",
+    "storage_bucket": "amanujar-donation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013518204688:android:605b9e57a7ebb361e02f95",
+        "android_client_info": {
+          "package_name": "inninc.studios.parashar.mutt.donation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013518204688-a4v0b3ngusju0hfsalub71fr9raipih9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4iQHm54Rt92IveWvwtZMlEwB2qgOI14I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013518204688-a4v0b3ngusju0hfsalub71fr9raipih9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
