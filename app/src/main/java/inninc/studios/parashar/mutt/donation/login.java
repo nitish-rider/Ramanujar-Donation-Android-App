@@ -25,7 +25,7 @@ public class login extends AppCompatActivity {
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().equals("admin-donation") && password.getText().toString().equals("ramanujar-donation")){
+                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
                     Intent intent=new Intent(login.this,MainActivity.class);
                     startActivity(intent);
                 }else {
