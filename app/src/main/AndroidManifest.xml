@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="inninc.studios.parashar.mutt.donation">
 
     <application
@@ -12,7 +13,8 @@
         <activity android:name=".Form"></activity>
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            tools:ignore="MissingClass" />
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
