@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button reciptMaker=(Button)findViewById(R.id.recipt);
+//        Button reciptMaker=(Button)findViewById(R.id.recipt);
+        TextView Hello = (TextView)findViewById(R.id.hello);
 
-        reciptMaker.setOnClickListener(new View.OnClickListener() {
+        Hello.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Form.class);
