@@ -113,16 +113,17 @@ public class Form extends AppCompatActivity {
         canvas.drawText("Donator Name: "+ donatorName.getText(), 20,80,myPaint);
         canvas.drawText("Phone Number: "+ mobileNum.getText(), 20,100,myPaint);
         canvas.drawText("Address: "+ address.getText(), 20,120,myPaint);
-        canvas.drawText("Amount"+donationAmt.getText(),20,140,myPaint);
+        canvas.drawText("Amount: "+donationAmt.getText(),20,140,myPaint);
         canvas.drawLine(20,155,230,155,forLine);
 
-        canvas.drawText("Receiver Name: "+ recieverName.getText(), 20,165,myPaint);
+        canvas.drawText("Receiver Name: "+ recieverName.getText(), 20,175,myPaint);
 
-        canvas.drawLine(20,170,230,170,forLine);
+        canvas.drawLine(20,185,230,185,forLine);
         canvas.drawText("Date :"+mDateFormat.format(new Date().getTime()), 20,260,myPaint);
 
         myPaint.setTextAlign(Paint.Align.CENTER);
         myPaint.setTextSize(12f);
+        myPaint.setColor(Color.RED);
         canvas.drawText("Thank You!", canvas.getWidth()/2,320,myPaint);
         myPdfDocument.finishPage(myPage1);
 
