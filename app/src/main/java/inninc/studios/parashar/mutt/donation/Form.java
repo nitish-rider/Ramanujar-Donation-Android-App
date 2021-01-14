@@ -1,5 +1,6 @@
 package inninc.studios.parashar.mutt.donation;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -8,11 +9,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.icu.text.DateFormat;
 import android.icu.text.DateTimePatternGenerator;
 import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -28,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class Form extends AppCompatActivity {
 
     Button createButton;
@@ -37,7 +41,8 @@ public class Form extends AppCompatActivity {
     EditText address;
     EditText recieverName;
     Date dateobj;
-    DateFormat dateFormat;
+    SimpleDateFormat mDateFormat=new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+    //DateFormat dateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +66,10 @@ public class Form extends AppCompatActivity {
                 putInDataBase();
                 Intent intent=new Intent(Form.this,MainActivity.class);
                 startActivity(intent);
+                printPdf();
             }
         });
-
-
-
-        //createPDF();
     }
-
-
 
     private void putInDataBase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -85,9 +85,61 @@ public class Form extends AppCompatActivity {
         myRef.child(rName).setValue(obj);
     }
 
+    private void printPdf(){
+        PdfDocument myPdfDocument = new PdfDocument();
+        Paint myPaint = new Paint();
+        Paint forLine=new Paint();
+
+        PdfDocument.PageInfo myPageInfo1 = new PdfDocument.PageInfo.Builder(250 , 350, 1).create();
+        PdfDocument.Page myPage1 = myPdfDocument.startPage(myPageInfo1);
+        Canvas canvas = myPage1.getCanvas();
 
 
-    private void createPDF() {
+        myPaint.setTextSize(5f);
+        myPaint.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText("call - +91-832724018" , 230,20,myPaint);
+
+
+        myPaint.setTextSize(9f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("INVOICE",canvas.getWidth()/2,40,myPaint);
+        forLine.setStyle(Paint.Style.STROKE);
+        forLine.setPathEffect(new DashPathEffect(new float[]{5,5},0));
+        forLine.setStrokeWidth(2);
+        canvas.drawLine(20,65,230,65,forLine);
+
+        myPaint.setTextAlign(Paint.Align.LEFT);
+        myPaint.setTextSize(10f);
+        myPaint.setColor(Color.BLACK);
+        canvas.drawText("Donator Name: "+ donatorName.getText(), 20,80,myPaint);
+        canvas.drawText("Phone Number: "+ mobileNum.getText(), 20,100,myPaint);
+        canvas.drawText("Address: "+ address.getText(), 20,120,myPaint);
+        canvas.drawText("Amount"+donationAmt.getText(),20,140,myPaint);
+        canvas.drawLine(20,155,230,155,forLine);
+
+        canvas.drawText("Receiver Name: "+ recieverName.getText(), 20,165,myPaint);
+
+        canvas.drawLine(20,170,230,170,forLine);
+        canvas.drawText("Date :"+mDateFormat.format(new Date().getTime()), 20,260,myPaint);
+
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        myPaint.setTextSize(12f);
+        canvas.drawText("Thank You!", canvas.getWidth()/2,320,myPaint);
+        myPdfDocument.finishPage(myPage1);
+
+        String dName=donatorName.getText().toString().trim();
+        File file = new File(this.getExternalFilesDir("/"),dName+donationAmt.getText().toString().trim()+".pdf");
+
+        try {
+            myPdfDocument.writeTo(new FileOutputStream(file));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        myPdfDocument.close();
+
+    }
+
+    /*private void createPDF() {
         createButton.setOnClickListener((view) ->{
 
             //initializing the date
@@ -174,5 +226,5 @@ public class Form extends AppCompatActivity {
 
 
         });
-    }
+    }*/
 }
