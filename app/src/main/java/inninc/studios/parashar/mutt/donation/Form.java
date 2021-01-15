@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class Form extends AppCompatActivity {
@@ -80,8 +81,10 @@ public class Form extends AppCompatActivity {
         String dAddress=address.getText().toString().trim();
         String rName=recieverName.getText().toString().trim();
 
-        Dataholder obj=new Dataholder(dName,dAmt,mNumer,dAddress);
-        myRef.child(rName).setValue(obj);
+        Dataholder obj=new Dataholder(dName,dAmt,mNumer,dAddress,rName);
+
+        String uniqueID = UUID.randomUUID().toString();
+        myRef.child(uniqueID).setValue(obj);
     }
 
     private void printPdf(){
