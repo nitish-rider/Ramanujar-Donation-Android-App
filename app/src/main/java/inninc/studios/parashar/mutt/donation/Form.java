@@ -3,8 +3,13 @@ package inninc.studios.parashar.mutt.donation;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
@@ -55,6 +60,15 @@ public class Form extends AppCompatActivity {
         recieverName = findViewById(R.id.recieverName);
         createButton = findViewById(R.id.submit);
 
+        //Checking for android version code...
+//      and create a notification channel...
+
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("Notification", "Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         //write file to external storage...
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
@@ -67,6 +81,16 @@ public class Form extends AppCompatActivity {
                 Intent intent=new Intent(Form.this,MainActivity.class);
                 startActivity(intent);
 
+                // Notification Code
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
+                builder.setContentTitle("Pdf Generated");
+                builder.setContentText("The PDF is created");
+                builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
+                builder.setAutoCancel(false);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
+                managerCompat.notify(1,builder.build());
             }
         });
     }
