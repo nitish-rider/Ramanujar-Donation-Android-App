@@ -84,11 +84,15 @@ public class Form extends AppCompatActivity {
 
                 // Notification Code
 
+                Intent pdfIntent=new Intent(Form.this,PDF_activity.class);
+                PendingIntent pdfPendingIntent = PendingIntent.getActivity(Form.this,1,pdfIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
                 builder.setContentTitle("Pdf Generated");
                 builder.setContentText("The PDF is created on" + "  " + getFilesDir());
                 builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
-                builder.setAutoCancel(false);
+                builder.setAutoCancel(true);
+                builder.setContentIntent(pdfPendingIntent);
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
                 managerCompat.notify(1,builder.build());
