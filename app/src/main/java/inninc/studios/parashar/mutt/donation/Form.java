@@ -160,7 +160,9 @@ public class Form extends AppCompatActivity {
         myPdfDocument.finishPage(myPage1);
 
         String dName=donatorName.getText().toString().trim();
-        File file = new File(this.getExternalFilesDir("/"),dName+mDateFormat.format(new Date().getTime())+".pdf");
+        String fName=dName+mDateFormat.format(new Date().getTime())+".pdf";
+        File file = new File(this.getExternalFilesDir("/"),fName);
+        FileNameHolder fileNameHolder=new FileNameHolder(fName);
 
         try {
             myPdfDocument.writeTo(new FileOutputStream(file));
