@@ -85,7 +85,7 @@ public class Form extends AppCompatActivity {
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
                 builder.setContentTitle("Pdf Generated");
-                builder.setContentText("The PDF is created");
+                builder.setContentText("The PDF is created on" + "  " + getFilesDir());
                 builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
                 builder.setAutoCancel(false);
 
