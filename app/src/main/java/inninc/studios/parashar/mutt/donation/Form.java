@@ -40,7 +40,7 @@ import java.util.UUID;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class Form extends AppCompatActivity {
-
+    static String fName;
     Button createButton;
     EditText donatorName;
     EditText donationAmt;
@@ -79,13 +79,13 @@ public class Form extends AppCompatActivity {
             public void onClick(View view) {
                 putInDataBase();
                 printPdf();
-                Intent intent=new Intent(Form.this,MainActivity.class);
+                Intent intent = new Intent(Form.this, MainActivity.class);
                 startActivity(intent);
 
                 // Notification Code
 
-                Intent pdfIntent=new Intent(Form.this,PDF_activity.class);
-                PendingIntent pdfPendingIntent = PendingIntent.getActivity(Form.this,1,pdfIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                Intent pdfIntent = new Intent(Form.this, PDF_activity.class);
+                PendingIntent pdfPendingIntent = PendingIntent.getActivity(Form.this, 1, pdfIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
                 builder.setContentTitle("Pdf Generated");
@@ -95,7 +95,7 @@ public class Form extends AppCompatActivity {
                 builder.setContentIntent(pdfPendingIntent);
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
-                managerCompat.notify(1,builder.build());
+                managerCompat.notify(1, builder.build());
             }
         });
     }
@@ -114,6 +114,10 @@ public class Form extends AppCompatActivity {
 
         String uniqueID = UUID.randomUUID().toString();
         myRef.child(uniqueID).setValue(obj);
+    }
+
+    public static String getfName() {
+        return fName;
     }
 
     private void printPdf(){
@@ -159,10 +163,9 @@ public class Form extends AppCompatActivity {
         canvas.drawText("Thank You!", canvas.getWidth()/2,320,myPaint);
         myPdfDocument.finishPage(myPage1);
 
-        String dName=donatorName.getText().toString().trim();
-        String fName=dName+mDateFormat.format(new Date().getTime())+".pdf";
+
+        fName=donatorName.getText().toString().trim()+mDateFormat.format(new Date().getTime())+".pdf";
         File file = new File(this.getExternalFilesDir("/"),fName);
-        FileNameHolder fileNameHolder=new FileNameHolder(fName);
 
         try {
             myPdfDocument.writeTo(new FileOutputStream(file));
