@@ -9,6 +9,20 @@
     android:background="@drawable/gradient"
     tools:context=".Form">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the details to generate the PDF"
+        android:textSize="22sp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="60dp"
+        android:textAlignment="center"/>
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
