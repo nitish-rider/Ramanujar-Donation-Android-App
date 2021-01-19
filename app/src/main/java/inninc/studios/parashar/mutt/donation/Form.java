@@ -45,8 +45,6 @@ public class Form extends AppCompatActivity {
     EditText donatorName;
     EditText donationAmt;
     EditText mobileNum;
-    EditText address;
-    EditText recieverName;
     Date dateobj;
     SimpleDateFormat mDateFormat=new SimpleDateFormat("dd-MM-yyyy hh:mm a");
     @Override
@@ -56,9 +54,7 @@ public class Form extends AppCompatActivity {
 
         donatorName = findViewById(R.id.donatorName);
         donationAmt = findViewById(R.id.donationAmt);
-        mobileNum = findViewById(R.id.mobileNum);
-        address = findViewById(R.id.address);
-        recieverName = findViewById(R.id.recieverName);
+        mobileNum = findViewById(R.id.mobileNum);;
         createButton = findViewById(R.id.submit);
 
         //Checking for android version code...
@@ -84,18 +80,16 @@ public class Form extends AppCompatActivity {
 
                 // Notification Code
 
-                Intent pdfIntent = new Intent(Form.this, PDF_activity.class);
-                PendingIntent pdfPendingIntent = PendingIntent.getActivity(Form.this, 1, pdfIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
                 builder.setContentTitle("Pdf Generated");
                 builder.setContentText("The PDF is created on" + "  " + getFilesDir());
                 builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
                 builder.setAutoCancel(true);
-                builder.setContentIntent(pdfPendingIntent);
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
                 managerCompat.notify(1, builder.build());
+
+                Toast.makeText(Form.this, "The PDF is created on" +"  " + getFilesDir(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -107,10 +101,8 @@ public class Form extends AppCompatActivity {
         String dName=donatorName.getText().toString().trim();
         String dAmt=donationAmt.getText().toString().trim();
         String mNumer=mobileNum.getText().toString().trim();
-        String dAddress=address.getText().toString().trim();
-        String rName=recieverName.getText().toString().trim();
 
-        Dataholder obj=new Dataholder(dName,dAmt,mNumer,dAddress,rName);
+        Dataholder obj=new Dataholder(dName,dAmt,mNumer);
 
         String uniqueID = UUID.randomUUID().toString();
         myRef.child(uniqueID).setValue(obj);
@@ -125,37 +117,70 @@ public class Form extends AppCompatActivity {
         Paint myPaint = new Paint();
         Paint forLine=new Paint();
 
-        PdfDocument.PageInfo myPageInfo1 = new PdfDocument.PageInfo.Builder(250 , 350, 1).create();
+        PdfDocument.PageInfo myPageInfo1 = new PdfDocument.PageInfo.Builder(350 , 350, 1).create();
         PdfDocument.Page myPage1 = myPdfDocument.startPage(myPageInfo1);
         Canvas canvas = myPage1.getCanvas();
 
-
+        myPaint.setColor(Color.BLUE);
         myPaint.setTextSize(5f);
         myPaint.setTextAlign(Paint.Align.RIGHT);
-        canvas.drawText("call - +91-832724018" , 230,20,myPaint);
+
+        canvas.drawText("PH:0431-2431109" , 330,20,myPaint);
+        canvas.drawText("Cell:9150403470" , 330,30,myPaint);
 
 
-        myPaint.setTextSize(9f);
+        myPaint.setTextSize(10f);
         myPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText("INVOICE",canvas.getWidth()/2,40,myPaint);
+        canvas.drawText("Sri:",canvas.getWidth()/2,40,myPaint);
+
+
+        myPaint.setTextSize(14f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("SRIMAAN TRUST",canvas.getWidth()/2,55,myPaint);
+
+
+        myPaint.setTextSize(11f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("No. 231,South Uthra Street,Srirangam,Trichy-6",canvas.getWidth()/2,70,myPaint);
+
+
+        myPaint.setTextSize(11f);
+        myPaint.setTextAlign(Paint.Align.LEFT);
+        canvas.drawText("Email: srimaantrust@gmail.com  /  Web: srimaantrust.com",20,85,myPaint);
+
+        myPaint.setTextSize(10f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("RECEIPT",canvas.getWidth()/2,100,myPaint);
+
+
+        myPaint.setTextSize(10f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("Tax Exemption u/s 80G(5) VI of the Income Tax Act,1961.",canvas.getWidth()/2,115,myPaint);
+
+        myPaint.setTextSize(10f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("C.No. 6162E(168)/2005-068CIT-I/TRY.Dt 10-10-2007",canvas.getWidth()/2,125,myPaint);
+
+
+        myPaint.setTextSize(10f);
+        myPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("Permanent Exemption from 01-04-2007,Pan no. AAFTS6887C",canvas.getWidth()/2,135,myPaint);
+
         forLine.setStyle(Paint.Style.STROKE);
         forLine.setPathEffect(new DashPathEffect(new float[]{5,5},0));
         forLine.setStrokeWidth(2);
-        canvas.drawLine(20,65,230,65,forLine);
+        canvas.drawLine(20,145,320,145,forLine);
+
 
         myPaint.setTextAlign(Paint.Align.LEFT);
         myPaint.setTextSize(10f);
         myPaint.setColor(Color.BLACK);
-        canvas.drawText("Donator Name: "+ donatorName.getText(), 20,80,myPaint);
-        canvas.drawText("Phone Number: "+ mobileNum.getText(), 20,100,myPaint);
-        canvas.drawText("Address: "+ address.getText(), 20,120,myPaint);
-        canvas.drawText("Amount: "+donationAmt.getText(),20,140,myPaint);
-        canvas.drawLine(20,155,230,155,forLine);
+        canvas.drawText("Donator Name: "+ donatorName.getText(), 20,160,myPaint);
+        canvas.drawText("Phone Number: "+ mobileNum.getText(), 20,175,myPaint);
+        canvas.drawText("Amount: "+donationAmt.getText(),20,190,myPaint);
+        canvas.drawLine(20,205,330,205,forLine);
 
-        canvas.drawText("Receiver Name: "+ recieverName.getText(), 20,175,myPaint);
-
-        canvas.drawLine(20,185,230,185,forLine);
-        canvas.drawText("Date :"+mDateFormat.format(new Date().getTime()), 20,260,myPaint);
+        canvas.drawText("Date :"+mDateFormat.format(new Date().getTime()), 20,250,myPaint);
 
         myPaint.setTextAlign(Paint.Align.CENTER);
         myPaint.setTextSize(12f);

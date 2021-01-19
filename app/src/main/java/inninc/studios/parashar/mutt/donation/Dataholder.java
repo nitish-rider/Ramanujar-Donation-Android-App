@@ -2,27 +2,18 @@ package inninc.studios.parashar.mutt.donation;
 
 public class Dataholder {
 
-    String donatorName ,donationAmt ,mobileNum ,address, reciverName ;
+    String donatorName ,donationAmt ,mobileNum ;
 
 
 
 
-    public Dataholder(String donatorName, String donationAmt, String mobileNum, String address, String reciverName) {
+    public Dataholder(String donatorName, String donationAmt, String mobileNum) {
         this.donatorName = donatorName;
         this.donationAmt = donationAmt;
         this.mobileNum = mobileNum;
-        this.address = address;
-        this.reciverName = reciverName;
+
     }
 
-
-    public String getReciverName() {
-        return reciverName;
-    }
-
-    public void setReciverName(String reciverName) {
-        this.reciverName = reciverName;
-    }
 
     public String getDonatorName() {
         return donatorName;
@@ -48,11 +39,4 @@ public class Dataholder {
         this.mobileNum = mobileNum;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }

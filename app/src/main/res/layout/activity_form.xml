@@ -71,31 +71,6 @@
 
     </LinearLayout>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address:-"
-        android:textSize="20sp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#FFF"
-        android:id="@+id/address"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name of the Reciever:-"
-        android:textSize="20sp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#FFF"
-        android:id="@+id/recieverName"
-        android:layout_marginBottom="10dp"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
