@@ -97,14 +97,20 @@ public class Form extends AppCompatActivity {
     private void putInDataBase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Reciver");
+        DatabaseReference getRef= FirebaseDatabase.getInstance().getReference().child("Reciver");
 
         String dName=donatorName.getText().toString().trim();
         String dAmt=donationAmt.getText().toString().trim();
         String mNumer=mobileNum.getText().toString().trim();
 
+
         Dataholder obj=new Dataholder(dName,dAmt,mNumer);
 
         String uniqueID = UUID.randomUUID().toString();
+
+
+
+
         myRef.child(uniqueID).setValue(obj);
     }
 
