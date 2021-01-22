@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp"
-        android:text="Enter the details to generate the PDF"
+        android:text="@string/enter_the_details_to_generate_the_pdf"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -25,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name of the donator:-"
+        android:text="@string/name_of_the_donator"
         android:textSize="20sp" />
 
     <EditText
@@ -33,7 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginBottom="10dp"
-        android:background="#FAF8F8" />
+        android:background="#FAF8F8"
+        android:autofillHints=""
+        android:inputType="textPersonName"
+        tools:ignore="LabelFor" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,15 +46,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Amount:-"
+            android:layout_marginEnd="30dp"
+            android:text="@string/amount"
             android:textSize="20sp" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mobile Number :-"
+            android:text="@string/mobile_number"
             android:textSize="20sp" />
 
 
@@ -69,16 +71,22 @@
             android:id="@+id/donationAmt"
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
-            android:background="#FFF" />
+            android:background="#FFF"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            tools:ignore="LabelFor" />
 
         <EditText
             android:id="@+id/mobileNum"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
-            android:background="#FFF" />
+            android:background="#FFF"
+            android:autofillHints=""
+            android:inputType="phone"
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 
@@ -87,6 +95,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_corner"
-        android:text="Submit" />
+        android:text="@string/submit" />
 
 </LinearLayout>

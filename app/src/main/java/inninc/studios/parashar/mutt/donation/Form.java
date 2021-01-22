@@ -1,17 +1,9 @@
 package inninc.studios.parashar.mutt.donation;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.Manifest;
-import android.app.Notification;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
@@ -19,17 +11,19 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
-import android.icu.text.DateFormat;
-import android.icu.text.DateTimePatternGenerator;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.ContactsContract;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +44,7 @@ public class Form extends AppCompatActivity {
     EditText donatorName;
     EditText donationAmt;
     EditText mobileNum;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat mDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
 
     @Override
@@ -60,7 +55,6 @@ public class Form extends AppCompatActivity {
         donatorName = findViewById(R.id.donatorName);
         donationAmt = findViewById(R.id.donationAmt);
         mobileNum = findViewById(R.id.mobileNum);
-        ;
         createButton = findViewById(R.id.submit);
 
 //Checking for android version code...
@@ -76,34 +70,30 @@ public class Form extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                putInDataBase();
+        createButton.setOnClickListener(view -> {
+            putInDataBase();
 
-                Intent intent = new Intent(Form.this, MainActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(Form.this, MainActivity.class);
+            startActivity(intent);
 
 // Notification Code
 
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
-                builder.setContentTitle("Pdf Generated");
-                builder.setContentText("The PDF is created on" + "  " + getFilesDir());
-                builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
-                builder.setAutoCancel(true);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
+            builder.setContentTitle("Pdf Generated");
+            builder.setContentText("The PDF is created on" + "  " + getFilesDir());
+            builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
+            builder.setAutoCancel(true);
 
-                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
-                managerCompat.notify(1, builder.build());
+            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
+            managerCompat.notify(1, builder.build());
 
-                Toast.makeText(Form.this, "The PDF is created on" + "  " + getFilesDir(), Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(Form.this, "The PDF is created on" + "  " + getFilesDir(), Toast.LENGTH_LONG).show();
         });
     }
 
     private void putInDataBase() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Reciver");
-        DatabaseReference getRef = FirebaseDatabase.getInstance().getReference().child("Reciver");
 
         String dName = donatorName.getText().toString().trim();
         String dAmt = donationAmt.getText().toString().trim();

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +17,8 @@
         android:background="@color/white"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/password"
@@ -31,7 +31,8 @@
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/login"
@@ -39,6 +40,6 @@
         android:layout_height="64dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_corner"
-        android:text="Sign In" />
+        android:text="@string/sign_in" />
 
 </LinearLayout>

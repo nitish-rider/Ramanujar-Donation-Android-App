@@ -9,4 +9,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="enter_the_details_to_generate_the_pdf">Enter the details to generate the PDF</string>
+    <string name="name_of_the_donator">Name of the donator:-</string>
+    <string name="amount">Amount:-</string>
+    <string name="mobile_number">Mobile Number :-</string>
+    <string name="submit">Submit</string>
+    <string name="sign_in">Sign In</string>
+    <string name="srimaan_trust">SRIMAAN TRUST</string>
+    <string name="srimaantrust_gmail_com">srimaantrust@gmail.com</string>
+    <string name="web_srimaantrust_com">Web: srimaantrust.com</string>
+    <string name="_0431_2431109">0431-2431109</string>
+    <string name="_9150403470">9150403470</string>
+    <string name="make_reciept">Make Reciept!</string>
 </resources>
