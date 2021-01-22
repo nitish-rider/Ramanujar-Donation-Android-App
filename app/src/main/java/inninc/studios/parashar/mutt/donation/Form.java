@@ -163,7 +163,7 @@ public class Form extends AppCompatActivity {
 
         myPaint.setTextSize(10f);
         myPaint.setTextAlign(Paint.Align.LEFT);
-        canvas.drawText("RECEIPT No.: " + invoiceNumber, 20, 100, myPaint);
+        canvas.drawText("RECEIPT No.: A" + invoiceNumber, 20, 100, myPaint);
 
 
         myPaint.setTextSize(10f);
