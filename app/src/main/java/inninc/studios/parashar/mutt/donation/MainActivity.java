@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        Button reciptMaker=(Button)findViewById(R.id.recipt);
-        TextView Hello = (TextView)findViewById(R.id.hello);
+        TextView Hello = (TextView) findViewById(R.id.hello);
 
         Hello.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Form.class);
+                Intent intent = new Intent(MainActivity.this, Form.class);
                 startActivity(intent);
             }
         });

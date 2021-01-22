@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="10dp"
-    android:gravity="center_horizontal"
-    tools:context=".MainActivity"
-    android:background="@drawable/gradient2">
+    tools:context=".MainActivity">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SRIMAAN TRUST"
         android:layout_marginTop="175dp"
-        android:textSize="40sp"
+        android:text="SRIMAAN TRUST"
         android:textColor="@color/black"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
 
@@ -30,7 +30,7 @@
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/email"/>
+            android:background="@drawable/email" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,17 +51,18 @@
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/web"/>
+            android:background="@drawable/web" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Web: srimaantrust.com"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,17 +72,18 @@
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/phone"/>
+            android:background="@drawable/phone" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 0431-2431109"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,14 +94,14 @@
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/phone_android"/>
+            android:background="@drawable/phone_android" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 9150403470"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -109,16 +111,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Make Reciept!"
-        android:textColor="@color/white"
-        android:textAlignment="center"
-        android:clickable="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:background="@drawable/round_corner"
+        android:clickable="true"
         android:padding="10dp"
-        />
-
+        android:text="Make Reciept!"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

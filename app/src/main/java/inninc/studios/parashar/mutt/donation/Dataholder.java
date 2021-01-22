@@ -2,15 +2,14 @@ package inninc.studios.parashar.mutt.donation;
 
 public class Dataholder {
 
-    String donatorName ,donationAmt ,mobileNum ;
-
-
+    String donatorName, donationAmt, mobileNum;
 
 
     public Dataholder(String donatorName, String donationAmt, String mobileNum) {
         this.donatorName = donatorName;
         this.donationAmt = donationAmt;
         this.mobileNum = mobileNum;
+
 
     }
 
