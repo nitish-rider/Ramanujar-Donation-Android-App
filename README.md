@@ -19,7 +19,7 @@
 
 <a name="preview"></a>
 # 𝕬𝖕𝖕 𝕻𝖗𝖊𝖛𝖎𝖊𝖜 -
-<img src="https://media.giphy.com/media/IZUmj5QuWTF4C0EzAK/giphy.gif" width="350" height="350"/><img src="https://media.giphy.com/media/DEavzzwO0vwroRpeJ1/giphy.gif" width="350" height="350"/>
+<img src="https://media.giphy.com/media/IZUmj5QuWTF4C0EzAK/giphy.gif" width="250" height="250"/><img src="https://media.giphy.com/media/DEavzzwO0vwroRpeJ1/giphy.gif" width="350" height="350"/>
 
 <a name="contents"></a>
 # 𝕿𝖆𝖇𝖑𝖊 𝕺𝖋 𝕮𝖔𝖓𝖙𝖊𝖓𝖙𝖘 -
