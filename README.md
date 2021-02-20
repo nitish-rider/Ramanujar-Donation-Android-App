@@ -52,13 +52,12 @@ flutter run
 # 𝕷𝖎𝖈𝖊𝖓𝖘𝖊 -
 𝚃𝚑𝚒𝚜 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚒𝚜 𝚞𝚗𝚍𝚎𝚛 [GNU General Public License v3.0 License](https://github.com/nks102000/Ramanujar-Donation-Android-App/blob/add-license-1/LICENSE).
 
+
+[Back to Start](#title)
+
 <a name="contributors"></a>
 # 𝕮𝖔𝖓𝖙𝖗𝖎𝖇𝖚𝖙𝖔𝖗𝖘 -
 1.) [NITISH KUMAR SONTHALIA](https://github.com/nks102000#hi-there--im-nitish-kumar-sonthalianks102000)  
 2.) [ASHISH KUMAR MISHRA](https://github.com/ashishmishra-bitr)  
 
-[Back to Start](#title)
-
-# 𝔸 𝔾𝔽𝔾 𝕂𝕀𝕀𝕋 ℙ𝕣𝕠𝕛𝕖𝕔𝕥   
-![Banner](https://github.com/Sayak11/theGeekBot/blob/master/gfgicon.png)  
 
