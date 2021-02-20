@@ -59,6 +59,6 @@ flutter run
 
 [Back to Start](#title)
 
-# 𝕬 𝕲𝕱𝕲 𝕶𝕴𝕴𝕿 𝕻𝖗𝖔𝖏𝖊𝖈𝖙   
+# 𝔸 𝔾𝔽𝔾 𝕂𝕀𝕀𝕋 ℙ𝕣𝕠𝕛𝕖𝕔𝕥   
 ![Banner](https://github.com/Sayak11/theGeekBot/blob/master/gfgicon.png)  
 
