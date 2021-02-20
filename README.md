@@ -2,7 +2,7 @@
 # 𝕽𝖆𝖒𝖆𝖓𝖚𝖏𝖆𝖗-𝕯𝖔𝖓𝖆𝖙𝖎𝖔𝖓-𝕬𝖓𝖉𝖗𝖔𝖎𝖉-𝕬𝖕𝖕 📑📑
 
 
-![Banner](https://github.com/Sayak11/theGeekBot/blob/master/pic1.png)
+![Banner](https://github.com/Sayak11/Ramanujar-Donation-Android-App/blob/master/pic1.png)
 
 
 
