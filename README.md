@@ -2,6 +2,8 @@
 # 𝕽𝖆𝖒𝖆𝖓𝖚𝖏𝖆𝖗-𝕯𝖔𝖓𝖆𝖙𝖎𝖔𝖓-𝕬𝖓𝖉𝖗𝖔𝖎𝖉-𝕬𝖕𝖕 📑📑
 
 
+![Banner](https://github.com/Sayak11/theGeekBot/blob/master/pic1.png)
+
 
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/nks102000/Ramanujar-Donation-Android-App?include_prereleases)
