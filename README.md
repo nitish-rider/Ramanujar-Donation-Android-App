@@ -50,7 +50,7 @@ flutter run
 
 <a name="license"></a>
 # 𝕷𝖎𝖈𝖊𝖓𝖘𝖊 -
-𝚃𝚑𝚒𝚜 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚒𝚜 𝚞𝚗𝚍𝚎𝚛 [GNU General Public License v3.0 License](https://github.com/Sayak11/theGeekBot/blob/add-license-1/LICENSE).
+𝚃𝚑𝚒𝚜 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚒𝚜 𝚞𝚗𝚍𝚎𝚛 [GNU General Public License v3.0 License](https://github.com/nks102000/Ramanujar-Donation-Android-App/blob/add-license-1/LICENSE).
 
 <a name="contributors"></a>
 # 𝕮𝖔𝖓𝖙𝖗𝖎𝖇𝖚𝖙𝖔𝖗𝖘 -
