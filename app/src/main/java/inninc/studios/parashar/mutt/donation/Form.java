@@ -44,6 +44,12 @@ public class Form extends AppCompatActivity {
     EditText donatorName;
     EditText donationAmt;
     EditText mobileNum;
+    EditText address;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Reciver");
+    final static long[] invoiceID = new long[1];
+    Dataholder obj;
+    String uniqueID;
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat mDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
 
@@ -56,6 +62,7 @@ public class Form extends AppCompatActivity {
         donationAmt = findViewById(R.id.donationAmt);
         mobileNum = findViewById(R.id.mobileNum);
         createButton = findViewById(R.id.submit);
+        address = findViewById(R.id.address);
 
 //Checking for android version code...
 //      and create a notification channel...
@@ -72,43 +79,47 @@ public class Form extends AppCompatActivity {
 
         createButton.setOnClickListener(view -> {
             putInDataBase();
+            Toast.makeText(Form.this, "UPDATE Started", Toast.LENGTH_LONG).show();
+//            updateDataBase(obj,invoiceID[0],uniqueID);
+
+            Toast.makeText(Form.this, "Update done", Toast.LENGTH_LONG).show();
+// Notification Code
+
 
             Intent intent = new Intent(Form.this, MainActivity.class);
             startActivity(intent);
-
-// Notification Code
-
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
-            builder.setContentTitle("Pdf Generated");
-            builder.setContentText("The PDF is created on" + "  " + getFilesDir());
-            builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
-            builder.setAutoCancel(true);
-
-            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
-            managerCompat.notify(1, builder.build());
-
-            Toast.makeText(Form.this, "The PDF is created on" + "  " + getFilesDir(), Toast.LENGTH_LONG).show();
         });
     }
 
     private void putInDataBase() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Reciver");
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Reciver");
 
         String dName = donatorName.getText().toString().trim();
         String dAmt = donationAmt.getText().toString().trim();
         String mNumer = mobileNum.getText().toString().trim();
+        String mAddress = address.getText().toString().trim();
+        String mDate = mDateFormat.format(new Date().getTime());
 
-        Dataholder obj = new Dataholder(dName, dAmt, mNumer);
+        obj = new Dataholder(dName, dAmt, mNumer, mAddress, mDate, -1);
 
-        String uniqueID = UUID.randomUUID().toString();
+
+        uniqueID = UUID.randomUUID().toString();
+
 
         myRef.addValueEventListener(new ValueEventListener() {
+
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                long invoiceID = snapshot.getChildrenCount();
-                printPdf(invoiceID);
+                invoiceID[0] = snapshot.getChildrenCount();
+                Toast.makeText(Form.this, "IN SNAPSHOT", Toast.LENGTH_LONG).show();
+                if (snapshot.child(uniqueID).child("invoiceID").getValue().toString().equals("-1")) {
+                    myRef.child(uniqueID).child("invoiceID").setValue(invoiceID[0]);
+                }
+                printPdf(invoiceID[0]);
+
             }
 
             @Override
@@ -119,9 +130,26 @@ public class Form extends AppCompatActivity {
         myRef.child(uniqueID).setValue(obj);
 
     }
+//    private void updateDataBase(Dataholder obj, long invID, String UUID){
+////        Dataholder NewObj=new Dataholder(obj.getDonatorName(),obj.getDonationAmt(),obj.getMobileNum(),obj.getAddress(),obj.getDate(),invID);
+////        myRef.child(UUID).removeValue();
+//        myRef.child(UUID).setValue(NewObj);
+//    }
 
 
     private void printPdf(long invoiceNumber) {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(Form.this, "Notification");
+        builder.setContentTitle("Pdf Generated");
+        builder.setContentText("The PDF is created on" + "  " + getFilesDir());
+        builder.setSmallIcon(R.drawable.ic_baseline_notifications_active_24);
+        builder.setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Form.this);
+        managerCompat.notify(1, builder.build());
+
+        Toast.makeText(Form.this, "The PDF is created on" + "  " + getFilesDir(), Toast.LENGTH_LONG).show();
+
         PdfDocument myPdfDocument = new PdfDocument();
         Paint myPaint = new Paint();
         Paint forLine = new Paint();
@@ -191,7 +219,8 @@ public class Form extends AppCompatActivity {
         canvas.drawText("Donator Name: " + donatorName.getText(), 20, 160, myPaint);
         canvas.drawText("Phone Number: " + mobileNum.getText(), 20, 175, myPaint);
         canvas.drawText("Amount: " + donationAmt.getText(), 20, 190, myPaint);
-        canvas.drawLine(20, 205, 330, 205, forLine);
+        canvas.drawText("Address: " + address.getText(), 20, 205, myPaint);
+        canvas.drawLine(20, 215, 330, 215, forLine);
 
         canvas.drawText("Date :" + mDateFormat.format(new Date().getTime()), 20, 250, myPaint);
 
