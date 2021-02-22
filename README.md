@@ -41,7 +41,7 @@ To clone this repo and look into the source code, go to the terminal in your wor
 git clone https://https://github.com/nks102000/Ramanujar-Donation-Android-App.git
 ```
 <a name="application"></a>
-<-----
+<!-----
 ## 𝕬𝖕𝖕𝖑𝖎𝖈𝖆𝖙𝖎𝖔𝖓 -
 ```
 flutter run 
