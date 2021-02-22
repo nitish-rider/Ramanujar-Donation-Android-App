@@ -79,10 +79,6 @@ public class Form extends AppCompatActivity {
 
         createButton.setOnClickListener(view -> {
             putInDataBase();
-            Toast.makeText(Form.this, "UPDATE Started", Toast.LENGTH_LONG).show();
-//            updateDataBase(obj,invoiceID[0],uniqueID);
-
-            Toast.makeText(Form.this, "Update done", Toast.LENGTH_LONG).show();
 // Notification Code
 
 
@@ -92,8 +88,6 @@ public class Form extends AppCompatActivity {
     }
 
     private void putInDataBase() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("Reciver");
 
         String dName = donatorName.getText().toString().trim();
         String dAmt = donationAmt.getText().toString().trim();
@@ -114,7 +108,6 @@ public class Form extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 invoiceID[0] = snapshot.getChildrenCount();
-                Toast.makeText(Form.this, "IN SNAPSHOT", Toast.LENGTH_LONG).show();
                 if (snapshot.child(uniqueID).child("invoiceID").getValue().toString().equals("-1")) {
                     myRef.child(uniqueID).child("invoiceID").setValue(invoiceID[0]);
                 }
@@ -130,11 +123,6 @@ public class Form extends AppCompatActivity {
         myRef.child(uniqueID).setValue(obj);
 
     }
-//    private void updateDataBase(Dataholder obj, long invID, String UUID){
-////        Dataholder NewObj=new Dataholder(obj.getDonatorName(),obj.getDonationAmt(),obj.getMobileNum(),obj.getAddress(),obj.getDate(),invID);
-////        myRef.child(UUID).removeValue();
-//        myRef.child(UUID).setValue(NewObj);
-//    }
 
 
     private void printPdf(long invoiceNumber) {
